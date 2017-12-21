@@ -511,6 +511,17 @@ var MetastoreTable = (function () {
               table: self
             })
           }));
+
+          self.apiHelper.navSearch({
+        	query: 'parentPath:"/' + self.database.name + '/' + self.name + '" AND type:FIELD AND description:[* TO *]',
+        	limit: 250
+          }).done(function (apps) {
+		    console.log(apps);
+		    // For each col update comment if there
+		    // and add identity
+		    // right now would trigger subrcribers
+		  });
+
           self.favouriteColumns(self.columns().slice(0, 5));
         },
         errorCallback: function () {
